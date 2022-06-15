@@ -465,7 +465,7 @@
 <!-- BUY ME A BEER AND HELP SUPPORT OPEN-SOURCE RESOURCES -->
 <div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
     <div>
-        <a title="Home" href="{{route('dashboard')}}" style="text-align:center !important"  class="bg-black block w-14 h-14 rounded-full transition-all  shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
+        <a title="Home" id="irArriba" href="{{route('dashboard')}}" style="text-align:center !important"  class="bg-black block w-14 h-14 rounded-full transition-all  cursor-pointer shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
             <i class="object-cover object-center text-white rounded-full fa-solid fa-house text-3xl" style="margin-top: 16%;"></i>
         </a>
     </div>

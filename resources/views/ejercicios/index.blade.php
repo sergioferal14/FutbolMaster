@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="mt-4 max-w-7xl mx-auto sm:px-6 lg:px-8 container oscurecer">
+    <div id="arriba" class="mt-4 max-w-7xl mx-auto sm:px-6 lg:px-8 container oscurecer">
 
         @if (!isset($sesion))
         <div class="my-2 grid md:grid-cols-3 mb-5 oscurecer">
@@ -12,7 +12,7 @@
                         <form action="{{ route('ejercicio.index1', $tipo) }}" method="GET">
                             @else
                             <form action="{{ route('ejercicio.index2') }}" method="GET">
-                                @endif 
+                                @endif
 
                                 <div class="input-group relative flex flex-wrap items-stretch w-full mb-4">
                                     <input name="busqueda" id="search" value="{{ $request->busqueda }}" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
@@ -37,7 +37,7 @@
                     </button>
                     @endif
 
-                    
+
 
                     <button id="botonCrear" class="oscurecer bg-black hover:bg-black text-white font-bold  py-2 px-4 rounded border-3 " type="button" data-modal-toggle="modalCrear">
                         <i class="fa-solid fa-plus"></i>
@@ -48,14 +48,14 @@
                         @endif
                     </button>
 
-                    
+
 
 
                     @include('ejercicios.create')
                 </div>
                 @if(!isset($sesion))
                 <div class="mx-auto ">
-                <a href="{{route('ejercicio.index',session()->get('sesionEntreno'))}}" type="button" class="oscurecer  bg-sky-700 hover: bg-sky-800 text-white font-bold py-2 px-4 sm: rounded border-3">
+                    <a href="{{route('ejercicio.index',session()->get('sesionEntreno'))}}" type="button" class="oscurecer  bg-sky-700 hover: bg-sky-800 text-white font-bold py-2 px-4 sm: rounded border-3">
                         <i class="mr-1 fa-solid fa-right-from-bracket"></i>Volver a la sesion
                     </a>
                 </div>
@@ -319,14 +319,14 @@
 
                         <!--Aqui termina el ejercicio -->
                         <div style="text-align: center;">
-                        @if(isset($sesion))
-                        @else
-                        @if ($ejercicios->count() > 0)
-                        <div class="mt-2 mx-auto col-span-4 " style="width:100%;display:block; text-align:center !important; margin-left:25% !important;">
-                            {{ $ejercicios->links() }}
-                        </div>
-                        @endif
-                        @endif
+                            @if(isset($sesion))
+                            @else
+                            @if ($ejercicios->count() > 0)
+                            <div class="mt-2 mx-auto col-span-4 " style="width:100%;display:block; text-align:center !important; margin-left:25% !important;">
+                                {{ $ejercicios->links() }}
+                            </div>
+                            @endif
+                            @endif
                         </div>
                         <!--Aqui termina el contenedor de los ejercicios-->
                     </div>
@@ -383,4 +383,23 @@
                     }
                 </script>
 
+                <!-- Script para subir al principio de la pagina -->
+
+                
+
+
+
 </x-app-layout>
+
+<script>
+                    let irArriba=document.getElementById('irArriba');
+                    irArriba.className="bg-black block w-14 h-14 rounded-full transition-all  cursor-pointer shadow hover:shadow-lg transform hover:scale-110"
+                    irArriba.innerHTML="<i class='object-cover object-center text-white rounded-full fa-solid fa-arrow-up text-3xl' style='margin-top: 16%;'></i>";
+                    irArriba.removeAttribute("href");
+                    irArriba.setAttribute("href","#arriba")
+                    irArriba.click(function() {
+                    document.getElementById('arriba').animate({
+                            scrollTop: '0px'
+                        }, 300);
+                    });
+                </script>
